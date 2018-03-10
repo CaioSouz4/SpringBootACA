@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>VN Jiu Jitsu</title>
+<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="shortcurt icon" href="imgs/favicon.ico"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Alunos</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+
+<body>
+
+    
+
+        <section id="body" class="width">
+            <aside id="sidebar" class="column-left">
+
+            <header>
+                
+                <h1><img src="imgs/logo2.png" href="#"></img></h1>
+
+                <h2>Venha fazer parte da VN jiu Jitsu</h2>
+                
+            </header>
+
+            <nav id="mainnav">
+                			<ul>
+                                <li><a th:href="@{/}">Inicio</a></li>
+                                                            
+                            </ul>
+            </nav>
+
+            
+            
+            </aside>
+            <section id="content" class="column-right">
+                        
+        <article>
+
+            <img src="imgs/capa1.png"></img>
+        
+        </article>
+    
+        <article class="expanded">
+
+                <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Cadastro de Alunos</strong>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" th:object="${aluno}" th:action="@{/save}" method="POST" style="margin: 10px">
+                    <div class="form-group">
+                        <fieldset>
+                            <div class="form-group row">
+                                <div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+                                    <div th:each="detailedError : ${#fields.detailedErrors()}">
+                                        <span th:text="${detailedError.message}"></span>
+                                    </div>
+                                </div>
+                            </div>                    
+                            <div class="form-group row">
+                                <div class="col-md-1">
+                                    <input type="hidden" class="form-control input-sm" id="id" th:field="*{id}"></input>
+                                </div>
+                             </div>
+                            <div class="form-group row">                                                          
+                                <div class="col-md-4" th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+                                    <label>Nome</label>
+                                    <input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome" maxlength="50"></input>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+                                    <label>Email</label> 
+                                    <input type="text" class="form-control input-sm" th:field="*{email}" maxlength="150" placeholder="Informe o email"></input>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2" th:classappend="${#fields.hasErrors('dataPagamento')}? 'has-error'">
+                                    <label>Data</label> 
+                                    <input type="date" class="form-control input-sm" th:field="*{dataPagamento}"></input>
+                                </div>
+                            </div>                        
+                           
+                            <div class="form-group row">
+                                <div class="col-md-2" th:classappend="${#fields.hasErrors('idade')}? 'has-error'">
+                                    <label>Idade</label>
+                                    <input type= "text" class="form-control input-sm" th:field="*{idade}"  placeholder="Informe a idade"></input>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2" th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
+                                    <label>Telefone</label>
+                                    <input type= "text" class="form-control input-sm" th:field="*{telefone}"  placeholder="Informe a telefone"></input>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                     <div class="form-group row">
+                                <div class="col-md-4" th:classappend="${#fields.hasErrors('horario')}? 'has-error'">
+                                    <label>Horario</label>
+                                   	<input type= "text" class="form-control input-sm" th:field="*{horario}"  placeholder="Informe o horario"></input>
+                                </div>
+                            </div>
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+                        <a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+                
+        </article>
+
+            
+            <footer class="clear">
+                <p>2017 VN ACADEMIA</p>
+            </footer>
+
+        </section>
+
+        <div class="clear"></div>
+
+    </section>
+    
+
+</body>
+</html>

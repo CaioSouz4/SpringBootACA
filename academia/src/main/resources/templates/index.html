@@ -1,0 +1,99 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+		<title>VN Jiu Jitsu</title>
+		<link rel="stylesheet" href="styles.css" type="text/css" />
+		<link rel="shortcurt icon" href="imgs/favicon.ico"/>
+	    <meta charset="UTF-8" />
+	    <meta name="viewport" content="width=device-width" />
+	    <title>Alunos</title>
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	</head>
+
+<body>
+		<section id="body" class="width">
+			<aside id="sidebar" class="column-left">
+
+			<header>				
+				<h1><img src="imgs/logo2.png"></img></h1>
+
+				<h2>Venha fazer parte da VN jiu Jitsu</h2>				
+			</header>
+
+			<nav id="mainnav">
+  							<ul>                            		
+                               	<li class="selected-item"><a href="alunos.html">Alunos</a></li>
+                               	<li><a th:href="@{/add}">Cadastrar</a></li>                            		                          		
+                        	</ul>
+			</nav>
+
+			
+			
+			</aside>
+			<section id="content" class="column-right">
+                		
+					 <article>
+						 <img src="imgs/capa1.png"></img>
+					 </article>   
+					    <article class="expanded">
+								<div class="panel panel-default">
+							        <div class="panel-heading">
+							        	<h2>ALUNOS</h2>
+							        </div>
+							        <div class="panel-body">
+							            <div class="table-responsive">
+							                <table class="table table-sm table-striped table-hover table-bordered">
+							                    <thead>
+							                        <tr>
+							                            <th>ID</th>
+							                            <th>nome</th>
+							                            <th>email</th>
+							                            <th>data de Pagamento</th>
+							                            <th></th>
+							                        </tr>
+							                    </thead>
+							                    <tbody>
+							                        <tr th:each="aluno : ${alunos}">
+							                            <td th:text="${aluno.id}"></td>
+							                            <td th:text="${aluno.nome}"></td>
+							                            <td th:text="${aluno.email}"></td>
+							                            <td th:text="${#dates.format(aluno.dataPagamento, 'dd/MM/yyyy')}"></td>
+							                            <td>
+							                                <div class="btn-group pull-right">
+							                                    <a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${aluno.id})}" >Editar</a>
+							                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${aluno.id})}">Excluir</a>
+							                               </div>
+							                            </td>
+							                        </tr>
+							                  </tbody>
+							              </table>
+							           </div>
+							        </div>
+							        <div class="panel-footer">
+							            
+							        </div>
+							    </div>		
+						
+					    
+						</article>
+	
+			
+			
+			<footer class="clear">
+				<p>2017 VN ACADEMIA</p>
+			</footer>
+
+		</section>
+
+		<div class="clear"></div>
+
+	</section>
+	
+
+</body>
+</html>
